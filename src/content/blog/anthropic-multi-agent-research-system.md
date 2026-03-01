@@ -2,7 +2,7 @@
 title: "如何构建多智能体研究系统：来自 Anthropic 的经验"
 description: "探讨 Anthropic 如何将其多智能体系统从原型推向生产，以及在系统架构、工具设计和提示工程方面学到的关键经验教训。"
 pubDate: "Mar 01 2026"
-heroImage: "/images/cover.jpg"
+heroImage: "/images/anthropic-multi-agent-cover.png"
 category: "AI"
 ---
 
