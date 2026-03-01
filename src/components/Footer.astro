@@ -7,19 +7,19 @@ const today = new Date();
 	<div class="social-links">
 		<a href="https://gemini.google.com/" target="_blank">
 			<span class="sr-only">Gemini</span>
-			Gemini
+			<img src="/icons/gemini.svg" alt="Gemini" width="32" height="32" />
 		</a>
 		<a href="https://openai.com/" target="_blank">
 			<span class="sr-only">OpenAI</span>
-			OpenAI
+			<img src="/icons/openai.svg" alt="OpenAI" width="32" height="32" />
 		</a>
 		<a href="https://www.anthropic.com/" target="_blank">
 			<span class="sr-only">Anthropic</span>
-			Anthropic
+			<img src="/icons/anthropic.svg" alt="Anthropic" width="32" height="32" />
 		</a>
 		<a href="https://www.langchain.com/" target="_blank">
 			<span class="sr-only">LangChain</span>
-			LangChain
+			<img src="/icons/langchain.svg" alt="LangChain" width="32" height="32" />
 		</a>
 	</div>
 </footer>
@@ -39,9 +39,17 @@ const today = new Date();
 	.social-links a {
 		text-decoration: none;
 		color: rgb(var(--gray));
-		font-weight: bold;
 	}
 	.social-links a:hover {
 		color: rgb(var(--gray-dark));
+	}
+	.social-links img {
+		width: 32px;
+		height: 32px;
+		filter: grayscale(100%);
+		transition: filter 0.3s ease;
+	}
+	.social-links a:hover img {
+		filter: grayscale(0%);
 	}
 </style>
