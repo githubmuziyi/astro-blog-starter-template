@@ -3,7 +3,7 @@ title: "针对AI智能体的有效上下文工程"
 description: "探讨从提示词工程向上下文工程的演变，以及如何为AI智能体构建高效的上下文环境，克服注意力窗口的限制。"
 pubDate: "Mar 01 2026"
 heroImage: "/images/context-engineering-cover.jpg"
-category: "AI Engineering"
+category: "AI Agents"
 ---
 
 ### 快速阅读

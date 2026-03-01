@@ -3,7 +3,7 @@ title: "针对长时间运行 AI 智能体的有效管理策略"
 description: "随着 AI 智能体承担越来越复杂的任务，如何让它们在多个上下文窗口之间保持进度成为一个难题。Anthropic 分享了他们在 Claude Agent SDK 上的双管齐下策略：初始化智能体与编码智能体的协作。"
 pubDate: "Mar 01 2026"
 heroImage: "/images/cover.jpg"
-category: "AI"
+category: "AI Agents"
 ---
 
 ### 快速阅读
