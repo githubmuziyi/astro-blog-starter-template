@@ -2,7 +2,7 @@
 title: "Anthropic 揭秘：如何打造多智能体研究系统（MARS）"
 description: "深度解析 Anthropic 研究团队如何通过 Orchestrator-Worker 模式，让 Claude 4 的多智能体协作性能提升 90%。"
 pubDate: "Mar 01 2026"
-heroImage: "/images/mars-cover.jpg"
+heroImage: "https://images.unsplash.com/photo-1531746790731-6c087fecd05a?q=80&w=960&h=480&auto=format&fit=crop"
 category: "AI 技术"
 ---
 
