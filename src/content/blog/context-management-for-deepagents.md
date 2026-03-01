@@ -3,6 +3,7 @@ title: "Deep Agents 的上下文管理"
 description: "随着 AI 智能体可处理的任务长度不断增加，有效的上下文管理对于防止“上下文腐烂”和应对 LLM 有限的记忆限制变得至关重要。"
 pubDate: "Mar 01 2026"
 heroImage: "/blog-placeholder-2.jpg"
+category: "AI Agents"
 ---
 
 # Deep Agents 的上下文管理

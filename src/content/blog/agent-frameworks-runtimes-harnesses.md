@@ -3,6 +3,7 @@ title: "智能体框架、运行时与工具台 (Agent Frameworks, Runtimes, and
 description: "LangChain、LangGraph 与 DeepAgents 的核心区别与适用场景深度解析。"
 pubDate: "Mar 01 2026"
 heroImage: "/blog-placeholder-2.jpg"
+category: "AI Agents"
 ---
 
 # 智能体框架、运行时与工具台：概念解析

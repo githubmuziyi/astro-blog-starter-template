@@ -3,6 +3,7 @@ title: "Agent Harness (缰绳): 2026 年 AI Agent 的决胜点"
 description: "为什么在 2026 年，我们需要 Agent Harness 来驾驭强大的模型？从 CPU/RAM 到 OS 的进化。"
 pubDate: "Feb 27 2026"
 heroImage: "/blog-placeholder-2.jpg"
+category: "AI Agents"
 ---
 
 # 2026 年的 AI 决胜点：Agent Harness (缰绳)

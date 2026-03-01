@@ -5,6 +5,7 @@ description: "LangChain has had agent abstractions for nearly three years. There
 author: "LangChain Accounts"
 pubDate: "Sep 08 2025"
 captured_at: "2026-03-01T05:56:33.416Z"
+category: "AI Agents"
 ---
 
 # Agent Middleware
