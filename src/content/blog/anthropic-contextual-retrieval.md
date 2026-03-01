@@ -3,7 +3,7 @@ title: "Anthropic的上下文检索 (Contextual Retrieval)：解决RAG痛点的�
 description: "Anthropic 提出一种名为“上下文检索”的新方法，通过在编码前为文本块添加上下文信息，显著降低了RAG中的检索失败率，如果结合重排(Reranking)，可使检索失败率下降达 67%。"
 pubDate: "Mar 01 2026"
 heroImage: "/images/cover.jpg"
-category: "AI"
+category: "RAG"
 ---
 
 ### 快速阅读
