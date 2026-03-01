@@ -89,4 +89,6 @@ LLM拥有一笔“注意力预算”。由于基于Transformer架构的模型需
 
 上下文工程标志着大模型应用开发方式的根本转变。挑战不再仅仅是写出完美的提示词，而是在模型有限的注意力预算内，精挑细选每一步的信息。不管是通过上下文压缩、开发Token友好的工具，还是赋予智能体即时检索的能力，核心原则始终如一：用最小的高价值Token集合，换取最理想的结果。
 
-> **🔗 原文链接**：[Effective context engineering for AI agents - Anthropic](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+<p style="font-size: 0.85rem; color: #808080; text-align: right; margin-top: 2rem;">
+  <i>🔗 原文链接：<a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" style="color: #808080; text-decoration: underline;">Effective context engineering for AI agents - Anthropic</a></i>
+</p>
