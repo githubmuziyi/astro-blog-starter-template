@@ -3,7 +3,7 @@ url: https://blog.langchain.com/agent-middleware/
 title: "Agent Middleware"
 description: "LangChain has had agent abstractions for nearly three years. There are now probably 100s of agent frameworks with the same core abstraction. They all suffer from the same downsides that the original LangChain agents suffered from: they do not give the developer enough control over context engineering when needed, leading"
 author: "LangChain Accounts"
-published: "2025-09-08"
+pubDate: "Sep 08 2025"
 captured_at: "2026-03-01T05:56:33.416Z"
 ---
 
