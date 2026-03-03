@@ -2,7 +2,7 @@
 title: "Agent Client Protocol (ACP): 终结 AI Agent 的“战国时代”"
 description: "深入解析 JetBrains 与 IBM 分别推动的两种 ACP 协议：它们如何标准化 AI 代理与编辑器、代理与代理之间的通信？"
 pubDate: "Feb 10 2025"
-heroImage: "/acp-protocol-cover.jpg"
+heroImage: "/images/acp-protocol-cover.jpg"
 category: "AI Protocols"
 ---
 
