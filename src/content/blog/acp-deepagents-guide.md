@@ -1,9 +1,9 @@
 ---
 title: "告别“三应用困境”：ACP 协议与 LangChain DeepAgents 实战解析"
 description: "深入解析 Agent Client Protocol (ACP) 架构，对比 MCP 协议，并带你理解 LangChain DeepAgents 如何通过协议接管 IDE，打造下一代智能编程基座。"
-heroImage: "/imgs/acp-deepagents-guide-cover.png"
+heroImage: "/acp-deepagents-guide-cover.png"
 pubDate: "Mar 03 2026"
-category: "AI Engineering"
+category: "AI Protocols"
 ---
 
 在 AI 辅助软件工程飞速发展的当下，大型语言模型（LLM）的编码能力已经从单行代码补全，演进到了具备系统级重构、自主 Debug 的智能体（Agent）阶段。
