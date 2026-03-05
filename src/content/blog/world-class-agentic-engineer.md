@@ -3,7 +3,7 @@ title: "如何成为顶级的 Agentic 工程师：大道至简"
 description: "为什么有些人能用 AI Agent 构建虚拟火箭，而你却在堆石头？本文带你揭开 Agent 工程的核心秘诀：摒弃复杂的框架，专注上下文、规则与契约。"
 pubDate: "Mar 05 2026"
 heroImage: "/images/world-class-agentic-engineer-20260305012500.jpg"
-category: "AI Agents"
+category: "Engineer"
 ---
 
 ### 快速阅读
