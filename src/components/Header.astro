@@ -61,10 +61,21 @@ const { isBlogPost = false } = Astro.props;
 	.social-links,
 	.social-links a {
 		display: flex;
+		align-items: center;
 	}
 	@media (max-width: 720px) {
-		.social-links {
-			display: none;
+		nav {
+			flex-wrap: wrap;
+			gap: 0.5em;
+		}
+		.internal-links {
+			order: 3;
+			width: 100%;
+			justify-content: center;
+			border-top: 1px solid #eee;
+		}
+		h2 {
+			font-size: 0.9em;
 		}
 	}
 	.sr-only {
