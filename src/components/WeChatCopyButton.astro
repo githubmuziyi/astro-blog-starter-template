@@ -3,75 +3,146 @@
 
 <div class="wechat-copy-wrapper">
   <button id="wechat-copy-trigger" class="copy-btn" title="复制到微信公众号" aria-label="Copy to WeChat">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-    <span>微信复制</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
   </button>
 
   <div id="wechat-copy-modal" class="modal-overlay hidden">
     <div class="modal-content">
-      <div class="modal-header">
-        <h3>复制到微信公众号</h3>
-        <button id="wechat-modal-close" class="close-btn">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="wc-theme-color">主题颜色</label>
-          <div class="color-picker-wrapper">
-            <input type="color" id="wc-theme-color" value="#2BAE85" />
-            <input type="text" id="wc-theme-color-text" value="#2BAE85" />
+      <button id="wechat-modal-close" class="modal-close-icon" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+      <div class="modal-scroll-area">
+        <!-- Theme Color -->
+        <div class="section">
+          <div class="section-header">主题色</div>
+          <div class="color-grid" id="wc-color-grid">
+            <div class="color-option active" style="--option-color: #2BAE85" data-color="#2BAE85"></div>
+            <div class="color-option" style="--option-color: #4361ee" data-color="#4361ee"></div>
+            <div class="color-option" style="--option-color: #f77f00" data-color="#f77f00"></div>
+            <div class="color-option" style="--option-color: #ef476f" data-color="#ef476f"></div>
+            <div class="color-option" style="--option-color: #1e6091" data-color="#1e6091"></div>
+            <div class="color-option" style="--option-color: #d4a373" data-color="#d4a373"></div>
+            <div class="color-option" style="--option-color: #4a4e69" data-color="#4a4e69"></div>
+            <div class="color-option" style="--option-color: #3a86ff" data-color="#3a86ff"></div>
+          </div>
+          <div class="custom-color-item">
+            <div class="custom-color-info">
+              <div class="color-preview-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+              </div>
+              <div class="color-text-details">
+                <div class="color-label">自定义</div>
+                <div class="color-hex" id="wc-color-hex">#2BAE85</div>
+              </div>
+            </div>
+            <input type="color" id="wc-theme-color" value="#2BAE85" class="color-input-hidden" />
+            <div class="color-toggle-preview" id="wc-current-color-preview" style="background-color: #2BAE85"></div>
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="wc-style">排版风格</label>
-          <select id="wc-style">
-            <option value="minimalist">Minimalist (极简)</option>
-            <option value="focus" selected>Focus (专注)</option>
-            <option value="exquisite">Exquisite (精致)</option>
-            <option value="eye-catching">Eye-catching (醒目)</option>
-          </select>
+        <!-- Styles -->
+        <div class="section">
+          <div class="section-header">风格</div>
+          <div class="style-grid">
+            <div class="style-card active" data-style="minimalist">
+              <div class="preview-box minimalist">
+                <div class="line title"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+              </div>
+              <div class="style-name">简约</div>
+            </div>
+            <div class="style-card" data-style="focus">
+              <div class="preview-box focus">
+                <div class="line-group">
+                  <div class="accent-bar"></div>
+                  <div class="line title"></div>
+                </div>
+                <div class="line"></div>
+                <div class="line"></div>
+              </div>
+              <div class="style-name">聚焦</div>
+            </div>
+            <div class="style-card" data-style="exquisite">
+              <div class="preview-box exquisite">
+                <div class="dot-row">
+                  <div class="dot"></div>
+                  <div class="line title"></div>
+                </div>
+                <div class="line highlight"></div>
+                <div class="line"></div>
+              </div>
+              <div class="style-name">精致</div>
+            </div>
+            <div class="style-card" data-style="eye-catching">
+              <div class="preview-box eye-catching">
+                <div class="block header"></div>
+                <div class="line highlight"></div>
+                <div class="line"></div>
+              </div>
+              <div class="style-name">醒目</div>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="wc-font">字体</label>
-          <select id="wc-font">
-            <option value="default" selected>系统默认 (Default)</option>
-            <option value="optima">Optima</option>
-            <option value="georgia">Georgia</option>
-          </select>
-        </div>
+        <!-- Advanced Settings -->
+        <div class="section advanced-section">
+          <div class="section-header foldable" id="wc-advanced-trigger">
+            <span>高级设置</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+          <div class="advanced-content hidden" id="wc-advanced-content">
+            <div class="option-group">
+              <div class="option-label">字体</div>
+              <div class="button-group" data-id="wc-font">
+                <button class="opt-btn" data-value="default">Default</button>
+                <button class="opt-btn" data-value="optima">Optima</button>
+                <button class="opt-btn active" data-value="georgia">Georgia</button>
+              </div>
+            </div>
+            
+            <div class="option-group">
+              <div class="option-label">字体大小</div>
+              <div class="button-group" data-id="wc-font-size">
+                <button class="opt-btn" data-value="14">14</button>
+                <button class="opt-btn" data-value="15">15</button>
+                <button class="opt-btn active" data-value="16">16</button>
+                <button class="opt-btn" data-value="17">17</button>
+                <button class="opt-btn" data-value="18">18</button>
+              </div>
+            </div>
 
-        <div class="form-group">
-          <label for="wc-font-size">基础字号 (px)</label>
-          <input type="number" id="wc-font-size" value="16" min="12" max="24" />
-        </div>
+            <div class="option-group">
+              <div class="option-label">标题大小</div>
+              <div class="button-group" data-id="wc-header-size">
+                <button class="opt-btn" data-value="compact">紧凑</button>
+                <button class="opt-btn active" data-value="streamlined">精简</button>
+                <button class="opt-btn" data-value="standard">标准</button>
+                <button class="opt-btn" data-value="prominent">突出</button>
+              </div>
+            </div>
 
-        <div class="form-group">
-          <label for="wc-header-size">标题大小</label>
-          <select id="wc-header-size">
-            <option value="compact">Compact (紧凑)</option>
-            <option value="streamlined">Streamlined (流畅)</option>
-            <option value="standard" selected>Standard (标准)</option>
-            <option value="prominent">Prominent (突出)</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="wc-paragraph-spacing">段落间距</label>
-          <select id="wc-paragraph-spacing">
-            <option value="compact">Compact (紧凑)</option>
-            <option value="moderate" selected>Moderate (适中)</option>
-            <option value="loose">Loose (宽松)</option>
-          </select>
-        </div>
-
-        <div class="form-group checkbox-group">
-          <input type="checkbox" id="wc-logo" />
-          <label for="wc-logo">在文末添加 Logo</label>
+            <div class="option-group">
+              <div class="option-label">段落间距</div>
+              <div class="button-group" data-id="wc-paragraph-spacing">
+                <button class="opt-btn" data-value="compact">紧凑</button>
+                <button class="opt-btn active" data-value="moderate">适中</button>
+                <button class="opt-btn" data-value="loose">宽松</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
       <div class="modal-footer">
-        <button id="wechat-copy-confirm" class="confirm-btn">确认并复制</button>
+        <div class="logo-toggle-wrapper">
+          <label class="switch">
+            <input type="checkbox" id="wc-logo">
+            <span class="slider round"></span>
+          </label>
+          <span>GodaClaw Logo</span>
+        </div>
+        <button id="wechat-copy-confirm" class="confirm-btn">确认</button>
       </div>
     </div>
   </div>
@@ -79,7 +150,6 @@
 
 <style>
   .wechat-copy-wrapper {
-    position: relative;
     display: flex;
     align-items: center;
   }
@@ -87,21 +157,17 @@
   .copy-btn {
     display: flex;
     align-items: center;
-    gap: 0.5em;
+    justify-content: center;
     background: transparent;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    padding: 0.4em 0.8em;
-    border-radius: 4px;
+    border: none;
+    color: var(--black);
+    padding: 1em 0.5em;
     cursor: pointer;
-    font-size: 0.9em;
-    transition: all 0.2s ease;
-    margin-right: 1em;
+    transition: color 0.2s ease;
   }
   
   .copy-btn:hover {
-    background: var(--accent);
-    color: white;
+    color: var(--accent);
   }
 
   .hidden {
@@ -114,196 +180,519 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 2000;
   }
 
   .modal-content {
-    background: white;
+    --modal-bg: #1e1e1e;
+    --modal-text: #ffffff;
+    --modal-text-secondary: #999999;
+    --modal-border: #333333;
+    --modal-hover: #2a2a2a;
+    --modal-active: #ffffff;
+    --modal-active-bg: #ffffff;
+    --modal-active-text: #000000;
+    
+    background: var(--modal-bg);
+    color: var(--modal-text);
     padding: 24px;
-    border-radius: 12px;
+    border-radius: 20px;
     width: 90%;
-    max-width: 400px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-width: 380px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    border: 1px solid var(--modal-border);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    position: relative;
   }
 
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 12px;
-  }
-
-  .modal-header h3 {
-    margin: 0;
-    font-size: 1.2em;
-    color: #333;
-  }
-
-  .close-btn {
-    background: none;
+  .modal-close-icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
     border: none;
-    font-size: 1.5em;
+    color: var(--modal-text-secondary);
     cursor: pointer;
-    color: #999;
-  }
-  
-  .close-btn:hover {
-    color: #333;
-  }
-
-  .form-group {
-    margin-bottom: 16px;
-  }
-
-  .form-group label {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 0.9em;
-    color: #555;
-    font-weight: 500;
-  }
-
-  .form-group select,
-  .form-group input[type="number"],
-  .form-group input[type="text"] {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 0.95em;
-    box-sizing: border-box;
-  }
-
-  .color-picker-wrapper {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .color-picker-wrapper input[type="color"] {
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .checkbox-group {
+    padding: 4px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 20px;
-  }
-  
-  .checkbox-group label {
-    margin-bottom: 0;
-  }
-
-  .modal-footer {
-    margin-top: 24px;
-    text-align: right;
-  }
-
-  .confirm-btn {
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 500;
-    width: 100%;
+    justify-content: center;
+    border-radius: 50%;
     transition: background 0.2s;
   }
 
-  .confirm-btn:hover {
-    background: #1a5cff; /* Fallback active color */
-    filter: brightness(0.9);
+  .modal-close-icon:hover {
+    background: var(--modal-hover);
+    color: var(--modal-text);
   }
 
+  .modal-scroll-area {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+
+  .modal-scroll-area::-webkit-scrollbar {
+    width: 4px;
+  }
+  .modal-scroll-area::-webkit-scrollbar-thumb {
+    background: var(--modal-border);
+    border-radius: 4px;
+  }
+
+  .section {
+    margin-bottom: 24px;
+  }
+
+  .section-header {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--modal-text-secondary);
+  }
+
+  .section-header.foldable {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 0;
+    border-top: 1px solid var(--modal-border);
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  .section-header.foldable .chevron {
+    transition: transform 0.3s ease;
+  }
+  .section-header.foldable.active .chevron {
+    transform: rotate(90deg);
+  }
+
+  /* Color Grid */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .color-option {
+    aspect-ratio: 4/3;
+    background-color: var(--option-color);
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s;
+  }
+  .color-option.active {
+    border-color: #ffffff;
+    transform: scale(0.95);
+  }
+
+  .custom-color-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--modal-hover);
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--modal-border);
+    cursor: pointer;
+    position: relative;
+  }
+
+  .custom-color-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .color-preview-icon {
+    width: 36px;
+    height: 36px;
+    background: #2a2a2a;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--modal-border);
+    color: var(--modal-text-secondary);
+  }
+
+  .color-label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .color-hex {
+    font-size: 12px;
+    color: var(--modal-text-secondary);
+  }
+
+  .color-toggle-preview {
+    width: 48px;
+    height: 28px;
+    border-radius: 14px;
+    border: 2px solid #333;
+  }
+
+  .color-input-hidden {
+    position: absolute;
+    right: 16px;
+    opacity: 0;
+    width: 48px;
+    height: 28px;
+    cursor: pointer;
+  }
+
+  /* Style Grid */
+  .style-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .style-card {
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .preview-box {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 12px;
+    height: 60px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .style-card.active .preview-box {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
+  .line {
+    height: 4px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    width: 100%;
+  }
+  .line.title {
+    width: 60%;
+    background: #2bae85; /* Placeholder color, updated via JS */
+  }
+  .line.highlight {
+    background: #2bae85;
+    opacity: 0.5;
+  }
+
+  /* Focus Style Preview */
+  .preview-box.focus {
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+  .preview-box.focus .line-group {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #2bae85;
+    border-bottom: 1px solid #2bae85;
+    padding: 2px 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .preview-box.focus .accent-bar {
+    display: none;
+  }
+
+  /* Exquisite Style Preview */
+  .preview-box.exquisite .dot-row {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .preview-box.exquisite .dot {
+    width: 4px;
+    height: 4px;
+    background: #2bae85;
+    border-radius: 50%;
+  }
+
+  /* Eye-catching Style Preview */
+  .preview-box.eye-catching .block.header {
+    height: 16px;
+    background: #2bae8520;
+    border-left: 2px solid #2bae85;
+    border-radius: 2px;
+    width: 100%;
+  }
+
+  .style-name {
+    font-size: 13px;
+    color: var(--modal-text-secondary);
+  }
+  .style-card.active .style-name {
+    color: var(--modal-text);
+  }
+
+  /* Advanced Options */
+  .advanced-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 8px;
+  }
+
+  .option-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .option-label {
+    font-size: 12px;
+    color: var(--modal-text-secondary);
+  }
+
+  .button-group {
+    display: flex;
+    background: var(--modal-hover);
+    padding: 4px;
+    border-radius: 8px;
+    gap: 4px;
+  }
+
+  .opt-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--modal-text-secondary);
+    padding: 6px 4px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .opt-btn.active {
+    background: var(--modal-active-bg);
+    color: var(--modal-active-text);
+    font-weight: 600;
+  }
+
+  /* Footer */
+  .modal-footer {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--modal-text-secondary);
+  }
+
+  /* Toggle Switch */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+  }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #333;
+    transition: .4s;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+  }
+  input:checked + .slider { background-color: var(--accent); }
+  input:checked + .slider:before { transform: translateX(16px); }
+  .slider.round { border-radius: 20px; }
+  .slider.round:before { border-radius: 50%; }
+
+  .confirm-btn {
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .confirm-btn:hover {
+    transform: scale(1.05);
+  }
+  .confirm-btn:active {
+    transform: scale(0.95);
+  }
   .confirm-btn:disabled {
-    opacity: 0.7;
+    opacity: 0.5;
     cursor: not-allowed;
   }
 </style>
 
 <script>
+  // State for all selections
+  const state = {
+    themeColor: '#2BAE85',
+    style: 'minimalist',
+    font: 'georgia',
+    fontSize: '16',
+    headerSize: 'streamlined',
+    paragraphSpacing: 'moderate',
+    logo: false
+  };
+
   function initWeChatCopy() {
     const trigger = document.getElementById('wechat-copy-trigger');
     const modal = document.getElementById('wechat-copy-modal');
     const closeBtn = document.getElementById('wechat-modal-close');
     const confirmBtn = document.getElementById('wechat-copy-confirm');
-    const colorInput = document.getElementById('wc-theme-color') as HTMLInputElement;
-    const colorText = document.getElementById('wc-theme-color-text') as HTMLInputElement;
+    const advancedTrigger = document.getElementById('wc-advanced-trigger');
+    const advancedContent = document.getElementById('wc-advanced-content');
 
     if (!trigger || !modal) return;
 
-    colorInput.addEventListener('input', (e) => {
-      colorText.value = (e.target as HTMLInputElement).value;
-    });
-    colorText.addEventListener('input', (e) => {
-      const val = (e.target as HTMLInputElement).value;
-      if (/^#[0-9A-F]{6}$/i.test(val)) {
-        colorInput.value = val;
-      }
-    });
-
-    trigger.addEventListener('click', () => {
-      modal.classList.remove('hidden');
-    });
-
-    closeBtn.addEventListener('click', () => {
-      modal.classList.add('hidden');
-    });
-
+    // Open/Close
+    trigger.addEventListener('click', () => modal.classList.remove('hidden'));
+    closeBtn?.addEventListener('click', () => modal.classList.add('hidden'));
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.add('hidden');
-      }
+      if (e.target === modal) modal.classList.add('hidden');
     });
 
-    confirmBtn.addEventListener('click', async () => {
+    // Advanced toggle
+    advancedTrigger?.addEventListener('click', () => {
+      advancedTrigger.classList.toggle('active');
+      advancedContent?.classList.toggle('hidden');
+    });
+
+    // Theme Color selection
+    const colorOptions = document.querySelectorAll('.color-option');
+    const colorHex = document.getElementById('wc-color-hex');
+    const colorInput = document.getElementById('wc-theme-color') as HTMLInputElement;
+    const colorPreview = document.getElementById('wc-current-color-preview');
+
+    function updateThemeColor(color: string) {
+      state.themeColor = color;
+      if (colorHex) colorHex.innerText = color.toUpperCase();
+      if (colorPreview) colorPreview.style.backgroundColor = color;
+      
+      // Update preview boxes
+      document.querySelectorAll('.line.title, .accent-bar, .dot, .block.header').forEach(el => {
+        (el as HTMLElement).style.backgroundColor = color;
+      });
+      // Update toggle color
+      document.documentElement.style.setProperty('--accent', color);
+    }
+
+    colorOptions.forEach(opt => {
+      opt.addEventListener('click', () => {
+        colorOptions.forEach(o => o.classList.remove('active'));
+        opt.classList.add('active');
+        const color = opt.getAttribute('data-color') || '#2BAE85';
+        updateThemeColor(color);
+        colorInput.value = color;
+      });
+    });
+
+    colorInput?.addEventListener('input', (e) => {
+      const color = (e.target as HTMLInputElement).value;
+      updateThemeColor(color);
+      // Remove active from grid if it doesn't match
+      colorOptions.forEach(o => o.classList.remove('active'));
+    });
+
+    // Style selection
+    const styleCards = document.querySelectorAll('.style-card');
+    styleCards.forEach(card => {
+      card.addEventListener('click', () => {
+        styleCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        state.style = card.getAttribute('data-style') || 'minimalist';
+      });
+    });
+
+    // General Button Groups (Font, Sizes, etc)
+    const buttonGroups = document.querySelectorAll('.button-group');
+    buttonGroups.forEach(group => {
+      const id = group.getAttribute('data-id');
+      const buttons = group.querySelectorAll('.opt-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const value = btn.getAttribute('data-value');
+          if (id === 'wc-font') state.font = value || 'default';
+          if (id === 'wc-font-size') state.fontSize = value || '16';
+          if (id === 'wc-header-size') state.headerSize = value || 'standard';
+          if (id === 'wc-paragraph-spacing') state.paragraphSpacing = value || 'moderate';
+        });
+      });
+    });
+
+    // Logo Toggle
+    const logoCheckbox = document.getElementById('wc-logo') as HTMLInputElement;
+    logoCheckbox?.addEventListener('change', () => {
+      state.logo = logoCheckbox.checked;
+    });
+
+    // Confirm Action
+    confirmBtn?.addEventListener('click', async () => {
       const originalText = confirmBtn.innerText;
-      confirmBtn.innerText = '正在处理...';
+      confirmBtn.innerText = '正在复制...';
       confirmBtn.setAttribute('disabled', 'true');
 
       try {
         await doWeChatCopy();
-        confirmBtn.innerText = '复制成功!';
+        confirmBtn.innerText = '已复制!';
         setTimeout(() => {
           modal.classList.add('hidden');
           confirmBtn.innerText = originalText;
           confirmBtn.removeAttribute('disabled');
-        }, 1500);
+        }, 1000);
       } catch (err) {
         console.error(err);
-        confirmBtn.innerText = '复制失败';
+        confirmBtn.innerText = '失败';
         setTimeout(() => {
           confirmBtn.innerText = originalText;
           confirmBtn.removeAttribute('disabled');
         }, 2000);
       }
     });
+
+    // Initial update for theme color
+    updateThemeColor(state.themeColor);
   }
 
   async function doWeChatCopy() {
-    const options = {
-      themeColor: (document.getElementById('wc-theme-color') as HTMLInputElement).value,
-      style: (document.getElementById('wc-style') as HTMLSelectElement).value,
-      font: (document.getElementById('wc-font') as HTMLSelectElement).value,
-      fontSize: (document.getElementById('wc-font-size') as HTMLInputElement).value,
-      headerSize: (document.getElementById('wc-header-size') as HTMLSelectElement).value,
-      paragraphSpacing: (document.getElementById('wc-paragraph-spacing') as HTMLSelectElement).value,
-      logo: (document.getElementById('wc-logo') as HTMLInputElement).checked,
-    };
+    const options = state;
 
     let fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
     if (options.font === 'optima') fontFamily = 'Optima, "Segoe UI", Roboto, Arial, sans-serif';
@@ -314,11 +703,21 @@
     if (options.paragraphSpacing === 'compact') { lh = 1.5; pMargin = '12px'; }
     if (options.paragraphSpacing === 'loose') { lh = 1.8; pMargin = '24px'; }
 
-    let h1Size = '2em', h2Size = '1.5em', h3Size = '1.25em';
+    let baseSize = parseInt(options.fontSize) || 16;
+    let h1px = baseSize * 1.5;
+    let h2px = baseSize * 1.4;
+    let h3px = baseSize * 1.25;
     let hMargin = '24px';
-    if (options.headerSize === 'compact') { h1Size = '1.5em'; h2Size = '1.3em'; h3Size = '1.1em'; hMargin = '16px'; }
-    if (options.headerSize === 'streamlined') { h1Size = '1.75em'; h2Size = '1.4em'; h3Size = '1.2em'; hMargin = '20px'; }
-    if (options.headerSize === 'prominent') { h1Size = '2.2em'; h2Size = '1.8em'; h3Size = '1.5em'; hMargin = '32px'; }
+    
+    if (options.headerSize === 'compact') { h1px = baseSize * 1.3; h2px = baseSize * 1.2; h3px = baseSize * 1.1; hMargin = '16px'; }
+    if (options.headerSize === 'streamlined') { h1px = baseSize * 1.4; h2px = baseSize * 1.3; h3px = baseSize * 1.2; hMargin = '20px'; }
+    if (options.headerSize === 'prominent') { h1px = baseSize * 1.8; h2px = baseSize * 1.6; h3px = baseSize * 1.4; hMargin = '32px'; }
+
+    h1px = Math.min(Math.round(h1px), 24);
+    h2px = Math.min(Math.round(h2px), 24);
+    h3px = Math.min(Math.round(h3px), 24);
+
+    let h1Size = h1px + 'px', h2Size = h2px + 'px', h3Size = h3px + 'px';
 
     const proseDiv = document.querySelector('.prose');
     if (!proseDiv) throw new Error("Article content not found");
@@ -327,12 +726,45 @@
     container.className = 'wechat-container';
     container.innerHTML = proseDiv.innerHTML;
 
+    // 0. Prepend Hero Image (if exists)
+    const mainHeroImg = document.querySelector('.hero-image img') as HTMLImageElement;
+    if (mainHeroImg) {
+      const clonedImg = mainHeroImg.cloneNode() as HTMLImageElement;
+      clonedImg.style.width = '100%';
+      clonedImg.style.height = 'auto';
+      clonedImg.style.marginBottom = '20px';
+      clonedImg.style.borderRadius = '8px';
+      clonedImg.style.display = 'block';
+      container.insertBefore(clonedImg, container.firstChild);
+    }
+
+    // 1. Remove unnecessary elements
+    container.querySelectorAll('.date, .hero-image, hr').forEach(el => el.remove());
+
+    // 2. Handle external links
+    const links = container.querySelectorAll('a');
+    links.forEach(a => {
+      const href = a.getAttribute('href');
+      if (href && (href.startsWith('http') || href.startsWith('//'))) {
+        const span = document.createElement('span');
+        span.innerText = href;
+        Object.assign(span.style, {
+          color: options.themeColor,
+          borderBottom: `1px solid ${options.themeColor}`,
+          textDecoration: 'none',
+          wordBreak: 'break-all'
+        });
+        a.parentNode?.replaceChild(span, a);
+      }
+    });
+
     const apply = (selector: string, styles: any) => {
       container.querySelectorAll(selector).forEach(el => {
         Object.assign((el as HTMLElement).style, styles);
       });
     };
 
+    // Global Styles
     Object.assign(container.style, {
       fontFamily: fontFamily,
       fontSize: options.fontSize + 'px',
@@ -342,99 +774,155 @@
       padding: '15px'
     });
 
-    apply('p', { marginTop: '0', marginBottom: pMargin, letterSpacing: '0.5px' });
+    container.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li, blockquote, td, th, div, span, a, strong, em').forEach(_el => {
+      const el = _el as HTMLElement;
+      const tag = el.tagName.toLowerCase();
+      if (tag !== 'code' && tag !== 'pre') el.style.fontFamily = fontFamily;
+      if (['p', 'li', 'blockquote', 'div', 'td', 'th', 'span', 'a', 'strong', 'em'].includes(tag)) {
+        el.style.fontSize = options.fontSize + 'px';
+        el.style.lineHeight = String(lh);
+        // Important: links and strong keep their theme color, bullets will be handled separately
+        if (tag !== 'a' && tag !== 'strong' && tag !== 'li') {
+          el.style.color = '#3f3f3f'; 
+        }
+      }
+    });
+
+    apply('p', { marginTop: '0', marginBottom: pMargin, letterSpacing: '0.05em', textAlign: 'justify' });
     apply('strong', { color: options.themeColor, fontWeight: 'bold' });
     apply('em', { fontStyle: 'italic', color: '#888' });
     apply('a', { color: options.themeColor, textDecoration: 'none', borderBottom: `1px solid ${options.themeColor}` });
-    apply('hr', { border: 'none', borderTop: '1px solid #eaecef', margin: '24px 0' });
-    apply('h1, h2, h3', { marginTop: hMargin, marginBottom: '16px', fontWeight: 'bold', color: '#1a1a1a' });
-    apply('h1', { fontSize: h1Size });
+    apply('h1, h2, h3', { marginBottom: '16px', fontWeight: 'bold', color: options.themeColor, letterSpacing: '0.05em' });
+    apply('h1', { fontSize: h1Size, marginTop: hMargin, textAlign: 'center' });
     apply('h2', { fontSize: h2Size });
-    apply('h3', { fontSize: h3Size });
-    apply('ul, ol', { paddingLeft: '2em', marginTop: '0', marginBottom: pMargin });
-    apply('li', { marginBottom: '0.25em' });
+    apply('h3', { fontSize: h3Size, marginTop: '24px' });
+
+    // Colored Bullets
+    container.querySelectorAll('li').forEach(_li => {
+      const li = _li as HTMLElement;
+      li.style.color = options.themeColor;
+      li.style.marginBottom = '8px';
+      // Wrap content to keep text dark while bullet is themed
+      const content = li.innerHTML;
+      li.innerHTML = `<span style="color: #3f3f3f; display: inline;">${content}</span>`;
+    });
+
+    // Dividers
+    container.querySelectorAll('h2').forEach((h2, index) => {
+      const divider = document.createElement('section');
+      
+      divider.innerHTML = `<section style="margin-top: 64px; margin-bottom: 40px; display: flex; justify-content: center; align-items: center;">
+        <section style="width: 100%; height: 1px; background-image: linear-gradient(to right, rgba(235, 235, 235, 0), ${options.themeColor}, rgba(235, 235, 235, 0));"></section>
+      </section>`;
+      
+      h2.parentNode?.insertBefore(divider, h2);
+      Object.assign((h2 as HTMLElement).style, { marginTop: '0px' });
+    });
+
+    apply('ul, ol', { paddingLeft: '1.2em', marginTop: '10px', marginBottom: pMargin, textAlign: 'justify' });
     apply('img', { maxWidth: '100%', height: 'auto', display: 'block', margin: `${pMargin} auto`, borderRadius: '8px' });
-    apply('code', { padding: '0.2em 0.4em', backgroundColor: 'rgba(27,31,35,0.05)', borderRadius: '3px', fontFamily: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace', fontSize: '85%', color: '#d14' });
-    apply('pre', { padding: '16px', overflow: 'auto', fontSize: '85%', lineHeight: '1.45', backgroundColor: '#f6f8fa', borderRadius: '6px', marginBottom: pMargin });
-    apply('pre code', { padding: '0', backgroundColor: 'transparent', color: '#333' });
+    apply('code', { padding: '2px 6px', backgroundColor: '#f3f4f5', borderRadius: '4px', fontSize: '85%', color: '#d14' });
+    apply('pre', { padding: '16px', fontSize: '85%', backgroundColor: '#2d2d2d', borderRadius: '8px', marginBottom: pMargin, color: '#ccc' });
 
     if (options.style === 'minimalist') {
-      apply('blockquote', { borderLeft: '4px solid #dfe2e5', padding: '5px 1em', color: '#6a737d', margin: `0 0 ${pMargin}` });
-      apply('h2', { borderBottom: '1px solid #eaecef', paddingBottom: '0.3em' });
+      apply('blockquote', { borderLeft: '4px solid #dfe2e5', padding: '10px 15px', color: '#6a737d', margin: `0 0 ${pMargin}` });
+      // H2 in minimalist doesn't have a border based on the ref image
     } else if (options.style === 'focus') {
-      apply('blockquote', { borderLeft: `4px solid ${options.themeColor}`, padding: '10px 15px', color: '#555', backgroundColor: '#f9f9f9', margin: `0 0 ${pMargin}`, borderRadius: '4px' });
-      apply('h2', { display: 'block', borderLeft: `4px solid ${options.themeColor}`, paddingLeft: '10px', marginBottom: '20px' });
+      apply('blockquote', { borderLeft: `4px solid ${options.themeColor}`, padding: '12px 16px', color: '#555', backgroundColor: '#f9f9f9', margin: `0 0 ${pMargin}`, borderRadius: '4px' });
+      
+      // H2 Focus Style: Centered with double lines
+      container.querySelectorAll('h2').forEach(h2 => {
+        Object.assign((h2 as HTMLElement).style, {
+          textAlign: 'center',
+          borderTop: `1px solid ${options.themeColor}`,
+          borderBottom: `1px solid ${options.themeColor}`,
+          padding: '8px 0',
+          display: 'block',
+          width: '100%',
+          opacity: '0.8'
+        });
+      });
     } else if (options.style === 'exquisite') {
-      apply('blockquote', { padding: '15px', borderRadius: '8px', background: 'rgba(0,0,0,0.03)', color: '#666', margin: `0 0 ${pMargin}`, border: '1px solid #eee' });
-      apply('h2', { backgroundColor: options.themeColor, color: '#fff', padding: '6px 14px', borderRadius: '6px', display: 'inline-block', marginBottom: '15px', fontSize: '1.1em' });
-      apply('strong', { borderBottom: '2px rgba(255,0,0,0.2) dashed' });
+      apply('blockquote', { padding: '16px', borderRadius: '8px', background: 'rgba(0,0,0,0.02)', color: '#666', margin: `0 0 ${pMargin}`, border: '1px solid #eee' });
+      
+      // H2 Exquisite Style: Vertical accent bars
+      container.querySelectorAll('h2').forEach(h2 => {
+        h2.innerHTML = `<span style="border-left: 3px solid ${options.themeColor}; padding-left: 10px; display: inline-block;">${h2.innerHTML}</span>`;
+        Object.assign((h2 as HTMLElement).style, {
+          borderLeft: `1px solid ${options.themeColor}`,
+          paddingLeft: '4px',
+          display: 'block'
+        });
+      });
+      apply('strong', { borderBottom: '2px rgba(255,0,0,0.1) dashed' });
     } else if (options.style === 'eye-catching') {
       apply('blockquote', { borderLeft: `6px solid ${options.themeColor}`, padding: '15px', background: 'rgba(0,0,0,0.04)', margin: `0 0 ${pMargin}`, color: '#333', fontWeight: 'bold' });
-      apply('h2', { textAlign: 'center', color: options.themeColor, marginTop: '32px', marginBottom: '24px', position: 'relative' });
       
+      // H2 Eye-catching Style: Background block with left border
       container.querySelectorAll('h2').forEach(h2 => {
-        const after = document.createElement('div');
-        Object.assign(after.style, { display: 'block', width: '50px', height: '3px', backgroundColor: options.themeColor, margin: '8px auto 0' });
-        h2.appendChild(after);
+        Object.assign((h2 as HTMLElement).style, {
+          backgroundColor: options.themeColor + '10', // 10 is approx 6% opacity in hex
+          borderLeft: `4px solid ${options.themeColor}`,
+          padding: '10px 15px',
+          color: options.themeColor,
+          borderRadius: '4px',
+          display: 'block',
+          textAlign: 'left' // Reset from center if needed
+        });
       });
-    } else {
-      apply('blockquote', { borderLeft: `4px solid ${options.themeColor}`, padding: '10px 15px', backgroundColor: '#f8f8f8', margin: `0 0 ${pMargin}` });
     }
 
     if (options.logo) {
       const footer = document.createElement('div');
-      footer.innerHTML = '<p style="text-align:center; font-size:12px; color:#999; margin-top: 40px;">Generated by Your custom MD CLI</p>';
+      footer.innerHTML = '<p style="text-align:center; font-size:12px; color:#999; margin-top: 30px;">GodaClaw blog ✨</p>';
       container.appendChild(footer);
     }
 
+    // Process images
     const images = container.querySelectorAll('img');
-    for (let i = 0; i < images.length; i++) {
-      const img = images[i] as HTMLImageElement;
-      if (!img.src.startsWith('data:')) {
+    for (const img of images) {
+      const imgEl = img as HTMLImageElement;
+      if (!imgEl.src.startsWith('data:')) {
         try {
-          const res = await fetch(img.src);
+          const res = await fetch(imgEl.src);
           const blob = await res.blob();
-          const reader = new FileReader();
-          const base64 = await new Promise((resolve) => {
-            reader.onloadend = () => resolve(reader.result);
-            reader.readAsDataURL(blob);
+          const base64 = await new Promise((r) => {
+            const rd = new FileReader();
+            rd.onloadend = () => r(rd.result);
+            rd.readAsDataURL(blob);
           });
-          img.src = base64 as string;
-          img.style.maxWidth = '100%';
-          img.style.height = 'auto';
+          imgEl.src = base64 as string;
         } catch (e) {
-          console.error("Failed to fetch/encode image:", img.src, e);
+          console.error("Image error:", imgEl.src, e);
         }
       }
     }
 
     const htmlString = container.outerHTML;
+    const tempElement = document.createElement('div');
+    tempElement.style.position = 'absolute';
+    tempElement.style.left = '-9999px';
+    tempElement.innerHTML = htmlString;
+    document.body.appendChild(tempElement);
+    const plainText = (tempElement as any).innerText || tempElement.textContent;
     
     if (navigator.clipboard && window.ClipboardItem) {
       const blobHtml = new Blob([htmlString], { type: 'text/html' });
-      const blobText = new Blob([container.innerText], { type: 'text/plain' });
+      const blobText = new Blob([plainText], { type: 'text/plain' });
       const data = [new ClipboardItem({ 'text/html': blobHtml, 'text/plain': blobText })];
       await navigator.clipboard.write(data);
     } else {
-      const tempElement = document.createElement('div');
-      tempElement.contentEditable = 'true';
-      tempElement.innerHTML = htmlString;
-      document.body.appendChild(tempElement);
-      
       const range = document.createRange();
       range.selectNodeContents(tempElement);
       const selection = window.getSelection();
       selection?.removeAllRanges();
       selection?.addRange(range);
-      
       document.execCommand('copy');
-      
       selection?.removeAllRanges();
-      document.body.removeChild(tempElement);
     }
+    document.body.removeChild(tempElement);
   }
 
   document.addEventListener('astro:page-load', initWeChatCopy);
-  // Also run initially
   initWeChatCopy();
 </script>
