@@ -883,19 +883,10 @@
     }
 
     // Process images
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     const images = container.querySelectorAll('img');
-    
     for (const img of images) {
       const imgEl = img as HTMLImageElement;
-      
-      // Ensure absolute URL
-      if (imgEl.src.startsWith('/') || imgEl.src.startsWith('./')) {
-        imgEl.src = new URL(imgEl.src, window.location.origin).href;
-      }
-
-      // Base64 conversion only for Desktop
-      if (!isMobile && !imgEl.src.startsWith('data:')) {
+      if (!imgEl.src.startsWith('data:')) {
         try {
           const res = await fetch(imgEl.src);
           const blob = await res.blob();
