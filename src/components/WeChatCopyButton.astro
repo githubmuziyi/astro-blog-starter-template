@@ -130,6 +130,14 @@
                 <button class="opt-btn" data-value="loose">宽松</button>
               </div>
             </div>
+
+            <div class="option-group">
+              <div class="option-label">图片模式</div>
+              <div class="button-group" data-id="wc-image-mode">
+                <button class="opt-btn active" data-value="with-images">有图</button>
+                <button class="opt-btn" data-value="without-images">无图</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -567,7 +575,8 @@
     fontSize: '16',
     headerSize: 'streamlined',
     paragraphSpacing: 'moderate',
-    logo: false
+    logo: false,
+    imageMode: 'with-images'
   };
 
   function initWeChatCopy() {
@@ -653,6 +662,7 @@
           if (id === 'wc-font-size') state.fontSize = value || '16';
           if (id === 'wc-header-size') state.headerSize = value || 'standard';
           if (id === 'wc-paragraph-spacing') state.paragraphSpacing = value || 'moderate';
+          if (id === 'wc-image-mode') state.imageMode = value || 'with-images';
         });
       });
     });
@@ -727,15 +737,17 @@
     container.innerHTML = proseDiv.innerHTML;
 
     // 0. Prepend Hero Image (if exists)
-    const mainHeroImg = document.querySelector('.hero-image img') as HTMLImageElement;
-    if (mainHeroImg) {
-      const clonedImg = mainHeroImg.cloneNode() as HTMLImageElement;
-      clonedImg.style.width = '100%';
-      clonedImg.style.height = 'auto';
-      clonedImg.style.marginBottom = '20px';
-      clonedImg.style.borderRadius = '8px';
-      clonedImg.style.display = 'block';
-      container.insertBefore(clonedImg, container.firstChild);
+    if (options.imageMode !== 'without-images') {
+      const mainHeroImg = document.querySelector('.hero-image img') as HTMLImageElement;
+      if (mainHeroImg) {
+        const clonedImg = mainHeroImg.cloneNode() as HTMLImageElement;
+        clonedImg.style.width = '100%';
+        clonedImg.style.height = 'auto';
+        clonedImg.style.marginBottom = '20px';
+        clonedImg.style.borderRadius = '8px';
+        clonedImg.style.display = 'block';
+        container.insertBefore(clonedImg, container.firstChild);
+      }
     }
 
     // 1. Remove unnecessary elements
@@ -921,39 +933,43 @@
     }
 
     // Process images
-    // 1. Remove <source> tags and unwrap <picture> tags to prevent 'srcset' from overriding our base64 src
-    container.querySelectorAll('source').forEach(source => source.remove());
-    container.querySelectorAll('picture').forEach(pic => {
-      const img = pic.querySelector('img');
-      if (img) {
-        pic.parentNode?.replaceChild(img, pic);
-      } else {
-        pic.remove();
-      }
-    });
+    if (options.imageMode === 'without-images') {
+      container.querySelectorAll('img, picture, source').forEach(el => el.remove());
+    } else {
+      // 1. Remove <source> tags and unwrap <picture> tags to prevent 'srcset' from overriding our base64 src
+      container.querySelectorAll('source').forEach(source => source.remove());
+      container.querySelectorAll('picture').forEach(pic => {
+        const img = pic.querySelector('img');
+        if (img) {
+          pic.parentNode?.replaceChild(img, pic);
+        } else {
+          pic.remove();
+        }
+      });
 
-    const images = container.querySelectorAll('img');
-    for (const img of images) {
-      const imgEl = img as HTMLImageElement;
-      
-      // Clear out attributes that might interfere with rendering the base64 src
-      imgEl.removeAttribute('srcset');
-      imgEl.removeAttribute('sizes');
-      imgEl.removeAttribute('loading');
-      imgEl.removeAttribute('decoding');
-      
-      if (!imgEl.src.startsWith('data:')) {
-        try {
-          const res = await fetch(imgEl.src);
-          const blob = await res.blob();
-          const base64 = await new Promise((r) => {
-            const rd = new FileReader();
-            rd.onloadend = () => r(rd.result);
-            rd.readAsDataURL(blob);
-          });
-          imgEl.src = base64 as string;
-        } catch (e) {
-          console.error("Image error:", imgEl.src, e);
+      const images = container.querySelectorAll('img');
+      for (const img of images) {
+        const imgEl = img as HTMLImageElement;
+        
+        // Clear out attributes that might interfere with rendering the base64 src
+        imgEl.removeAttribute('srcset');
+        imgEl.removeAttribute('sizes');
+        imgEl.removeAttribute('loading');
+        imgEl.removeAttribute('decoding');
+        
+        if (!imgEl.src.startsWith('data:')) {
+          try {
+            const res = await fetch(imgEl.src);
+            const blob = await res.blob();
+            const base64 = await new Promise((r) => {
+              const rd = new FileReader();
+              rd.onloadend = () => r(rd.result);
+              rd.readAsDataURL(blob);
+            });
+            imgEl.src = base64 as string;
+          } catch (e) {
+            console.error("Image error:", imgEl.src, e);
+          }
         }
       }
     }
