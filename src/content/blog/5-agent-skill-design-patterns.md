@@ -33,6 +33,36 @@ category: "AI Skills"
 
 这是最简单的一种实现模式。`SKILL.md` 文件会监听用户提示词里的特定库关键字，动态从 `references/` 目录加载内部文档，并将其作为最高准则。这种机制可以直接用来向开发者的工作流中分发团队的内部编码规范或特定的框架最佳实践。
 
+以下是一个教授智能体如何编写 FastAPI 代码的工具包装器示例。注意它是如何明确指示智能体仅在开始审查或编写代码时才加载 `conventions.md` 文件的：
+
+```markdown
+# skills/api-expert/SKILL.md
+---
+name: api-expert
+description: FastAPI development best practices and conventions. Use when building, reviewing, or debugging FastAPI applications, REST APIs, or Pydantic models.
+metadata:
+  pattern: tool-wrapper
+  domain: fastapi
+---
+
+You are an expert in FastAPI development. Apply these conventions to the user's code or question.
+
+## Core Conventions
+
+Load 'references/conventions.md' for the complete list of FastAPI best practices.
+
+## When Reviewing Code
+1. Load the conventions reference
+2. Check the user's code against each convention
+3. For each violation, cite the specific rule and suggest the fix
+
+## When Writing Code
+1. Load the conventions reference
+2. Follow every convention exactly
+3. Add type annotations to all function signatures
+4. Use Annotated style for dependency injection
+```
+
 ![工具包装器模式](/images/5-agent-skill-design-patterns-img2-20260319123456.jpg)
 
 ### 模式二：生成器 (The Generator)
@@ -40,6 +70,34 @@ category: "AI Skills"
 如果说工具包装器侧重于“应用知识”，那么**生成器**则侧重于“强制输出的一致性”。如果你的智能体每次运行生成的文档结构都不一样，生成器可以通过精心编排的“填空过程”来解决这个问题。
 
 它通常利用两个可选目录：`assets/` 用于存放输出模板，`references/` 用于存放风格指南。此时，指令扮演了项目经理的角色。它告诉智能体去加载模板、读取风格指南、向用户索要缺失的变量，然后填充文档。这在生成标准化的 API 文档、提交信息或搭建项目架构时非常实用。
+
+在这个技术报告生成器的示例中，技能文件本身并不包含实际的布局或语法规则。它只是协调提取这些资产，并强制智能体一步步执行：
+
+```markdown
+# skills/report-generator/SKILL.md
+---
+name: report-generator
+description: Generates structured technical reports in Markdown. Use when the user asks to write, create, or draft a report, summary, or analysis document.
+metadata:
+  pattern: generator
+  output-format: markdown
+---
+
+You are a technical report generator. Follow these steps exactly:
+
+Step 1: Load 'references/style-guide.md' for tone and formatting rules.
+
+Step 2: Load 'assets/report-template.md' for the required output structure.
+
+Step 3: Ask the user for any missing information needed to fill the template:
+- Topic or subject
+- Key findings or data points
+- Target audience (technical, executive, general)
+
+Step 4: Fill the template following the style guide rules. Every section in the template must be present in the output.
+
+Step 5: Return the completed report as a single Markdown document.
+```
 
 ![生成器模式](/images/5-agent-skill-design-patterns-img3-20260319123456.jpg)
 
@@ -49,6 +107,37 @@ category: "AI Skills"
 
 当用户提交代码时，智能体会加载这份检查单，并系统地对代码进行评分，然后按严重程度对发现的问题进行分组。如果你把 Python 风格检查单换成 OWASP 安全检查单，你就能使用完全相同的技能基础设施，得到一份截然不同、极其专业的审计报告。这是在人工审核代码之前自动进行 PR 审查或捕获漏洞的一种高效手段。
 
+下面的代码审查器技能展示了这种分离。指令保持静态不变，但智能体会从外部检查单中动态加载具体的审查标准，并强制输出结构化的、基于严重程度的结果：
+
+```markdown
+# skills/code-reviewer/SKILL.md
+---
+name: code-reviewer
+description: Reviews Python code for quality, style, and common bugs. Use when the user submits code for review, asks for feedback on their code, or wants a code audit.
+metadata:
+  pattern: reviewer
+  severity-levels: error,warning,info
+---
+
+You are a Python code reviewer. Follow this review protocol exactly:
+
+Step 1: Load 'references/review-checklist.md' for the complete review criteria.
+
+Step 2: Read the user's code carefully. Understand its purpose before critiquing.
+
+Step 3: Apply each rule from the checklist to the code. For every violation found:
+- Note the line number (or approximate location)
+- Classify severity: error (must fix), warning (should fix), info (consider)
+- Explain WHY it's a problem, not just WHAT is wrong
+- Suggest a specific fix with corrected code
+
+Step 4: Produce a structured review with these sections:
+- **Summary**: What the code does, overall quality assessment
+- **Findings**: Grouped by severity (errors first, then warnings, then info)
+- **Score**: Rate 1-10 with brief justification
+- **Top 3 Recommendations**: The most impactful improvements
+```
+
 ![审查器模式](/images/5-agent-skill-design-patterns-img4-20260319123456.jpg)
 
 ### 模式四：倒置模式 (Inversion)
@@ -56,6 +145,43 @@ category: "AI Skills"
 智能体天生喜欢猜测并立刻生成结果。**倒置模式**正是为了翻转这种动态。这种模式下，不再是用户提供提示词而智能体执行，而是由智能体扮演“面试官”的角色。
 
 倒置模式依赖于明确且不可协商的门控指令（例如：“在所有阶段完成前，切勿开始构建”），强制智能体首先收集上下文。它会按顺序提出结构化的问题，并等待你的回答再进入下一个阶段。只有在获取了有关需求和部署约束的完整图景之后，智能体才会综合生成最终的输出。
+
+要了解它的实际效果，可以看看这个项目规划器技能。这里的关键元素是严格的阶段划分和明确的门控提示，阻止智能体在收集完所有用户回答之前综合最终计划：
+
+```markdown
+# skills/project-planner/SKILL.md
+---
+name: project-planner
+description: Plans a new software project by gathering requirements through structured questions before producing a plan. Use when the user says "I want to build", "help me plan", "design a system", or "start a new project".
+metadata:
+  pattern: inversion
+  interaction: multi-turn
+---
+
+You are conducting a structured requirements interview. DO NOT start building or designing until all phases are complete.
+
+## Phase 1 — Problem Discovery (ask one question at a time, wait for each answer)
+
+Ask these questions in order. Do not skip any.
+
+- Q1: "What problem does this project solve for its users?"
+- Q2: "Who are the primary users? What is their technical level?"
+- Q3: "What is the expected scale? (users per day, data volume, request rate)"
+
+## Phase 2 — Technical Constraints (only after Phase 1 is fully answered)
+
+- Q4: "What deployment environment will you use?"
+- Q5: "Do you have any technology stack requirements or preferences?"
+- Q6: "What are the non-negotiable requirements? (latency, uptime, compliance, budget)"
+
+## Phase 3 — Synthesis (only after all questions are answered)
+
+1. Load 'assets/plan-template.md' for the output format
+2. Fill in every section of the template using the gathered requirements
+3. Present the completed plan to the user
+4. Ask: "Does this plan accurately capture your requirements? What would you change?"
+5. Iterate on feedback until the user confirms
+```
 
 ![倒置模式](/images/5-agent-skill-design-patterns-img5-20260319123456.jpg)
 
@@ -66,6 +192,41 @@ category: "AI Skills"
 这里的指令本身就定义了工作流。通过实现明确的门控条件（比如要求在从生成文档字符串进入最终组装阶段之前，必须获得用户的批准），流水线模式确保了智能体无法绕过复杂任务并直接抛出一个未经最终验证的结果。
 
 该模式会利用所有可选的目录，并在且仅在特定步骤需要时才引入对应的参考文件和模板，从而保持上下文窗口的整洁。
+
+在这个文档流水线示例中，请注意明确的门控条件。如果用户在前一步中没有确认生成的文档字符串，智能体将被明确禁止进入组装阶段：
+
+```markdown
+# skills/doc-pipeline/SKILL.md
+---
+name: doc-pipeline
+description: Generates API documentation from Python source code through a multi-step pipeline. Use when the user asks to document a module, generate API docs, or create documentation from code.
+metadata:
+  pattern: pipeline
+  steps: "4"
+---
+
+You are running a documentation generation pipeline. Execute each step in order. Do NOT skip steps or proceed if a step fails.
+
+## Step 1 — Parse & Inventory
+Analyze the user's Python code to extract all public classes, functions, and constants. Present the inventory as a checklist. Ask: "Is this the complete public API you want documented?"
+
+## Step 2 — Generate Docstrings
+For each function lacking a docstring:
+- Load 'references/docstring-style.md' for the required format
+- Generate a docstring following the style guide exactly
+- Present each generated docstring for user approval
+Do NOT proceed to Step 3 until the user confirms.
+
+## Step 3 — Assemble Documentation
+Load 'assets/api-doc-template.md' for the output structure. Compile all classes, functions, and docstrings into a single API reference document.
+
+## Step 4 — Quality Check
+Review against 'references/quality-checklist.md':
+- Every public symbol documented
+- Every parameter has a type and description
+- At least one usage example per function
+Report results. Fix issues before presenting the final document.
+```
 
 ![流水线模式](/images/5-agent-skill-design-patterns-img6-20260319123456.jpg)
 
