@@ -39,28 +39,28 @@ category: "AI Skills"
 # skills/api-expert/SKILL.md
 ---
 name: api-expert
-description: FastAPI development best practices and conventions. Use when building, reviewing, or debugging FastAPI applications, REST APIs, or Pydantic models.
+description: FastAPI 开发最佳实践与规范。当构建、审查或调试 FastAPI 应用程序、REST API 或 Pydantic 模型时使用。
 metadata:
   pattern: tool-wrapper
   domain: fastapi
 ---
 
-You are an expert in FastAPI development. Apply these conventions to the user's code or question.
+你是一位 FastAPI 开发专家。请将以下规范应用于用户的代码或问题。
 
-## Core Conventions
+## 核心规范 (Core Conventions)
 
-Load 'references/conventions.md' for the complete list of FastAPI best practices.
+加载 'references/conventions.md' 以获取 FastAPI 最佳实践的完整列表。
 
-## When Reviewing Code
-1. Load the conventions reference
-2. Check the user's code against each convention
-3. For each violation, cite the specific rule and suggest the fix
+## 当审查代码时 (When Reviewing Code)
+1. 加载规范参考文件
+2. 逐一比对用户的代码和各项规范
+3. 对于每一处违规，引用具体的规则并提供修改建议
 
-## When Writing Code
-1. Load the conventions reference
-2. Follow every convention exactly
-3. Add type annotations to all function signatures
-4. Use Annotated style for dependency injection
+## 当编写代码时 (When Writing Code)
+1. 加载规范参考文件
+2. 严格遵守每一项规范
+3. 为所有函数签名添加类型注解
+4. 使用 Annotated 风格进行依赖注入
 ```
 
 ![工具包装器模式](/images/5-agent-skill-design-patterns-img2-20260319123456.jpg)
@@ -77,26 +77,26 @@ Load 'references/conventions.md' for the complete list of FastAPI best practices
 # skills/report-generator/SKILL.md
 ---
 name: report-generator
-description: Generates structured technical reports in Markdown. Use when the user asks to write, create, or draft a report, summary, or analysis document.
+description: 以 Markdown 格式生成结构化的技术报告。当用户要求撰写、创建或起草报告、总结或分析文档时使用。
 metadata:
   pattern: generator
   output-format: markdown
 ---
 
-You are a technical report generator. Follow these steps exactly:
+你是一个技术报告生成器。请严格执行以下步骤：
 
-Step 1: Load 'references/style-guide.md' for tone and formatting rules.
+步骤 1: 加载 'references/style-guide.md' 获取语气和排版规则。
 
-Step 2: Load 'assets/report-template.md' for the required output structure.
+步骤 2: 加载 'assets/report-template.md' 获取所需的输出结构。
 
-Step 3: Ask the user for any missing information needed to fill the template:
-- Topic or subject
-- Key findings or data points
-- Target audience (technical, executive, general)
+步骤 3: 询问用户以补充填写模板所需的任何缺失信息：
+- 主题或科目
+- 核心发现或数据点
+- 目标读者（技术人员、管理层、普通大众）
 
-Step 4: Fill the template following the style guide rules. Every section in the template must be present in the output.
+步骤 4: 按照风格指南的规则填充模板。模板中的每一个部分都必须在输出结果中呈现。
 
-Step 5: Return the completed report as a single Markdown document.
+步骤 5: 将完成的报告作为单个 Markdown 文档返回。
 ```
 
 ![生成器模式](/images/5-agent-skill-design-patterns-img3-20260319123456.jpg)
@@ -113,29 +113,29 @@ Step 5: Return the completed report as a single Markdown document.
 # skills/code-reviewer/SKILL.md
 ---
 name: code-reviewer
-description: Reviews Python code for quality, style, and common bugs. Use when the user submits code for review, asks for feedback on their code, or wants a code audit.
+description: 审查 Python 代码的质量、代码风格以及常见 bug。当用户提交代码请求审查、要求提供代码反馈或进行代码审计时使用。
 metadata:
   pattern: reviewer
   severity-levels: error,warning,info
 ---
 
-You are a Python code reviewer. Follow this review protocol exactly:
+你是一位 Python 代码审查员。请严格遵守以下审查协议：
 
-Step 1: Load 'references/review-checklist.md' for the complete review criteria.
+步骤 1: 加载 'references/review-checklist.md' 以获取完整的审查标准。
 
-Step 2: Read the user's code carefully. Understand its purpose before critiquing.
+步骤 2: 仔细阅读用户的代码。在进行批评之前先理解其意图。
 
-Step 3: Apply each rule from the checklist to the code. For every violation found:
-- Note the line number (or approximate location)
-- Classify severity: error (must fix), warning (should fix), info (consider)
-- Explain WHY it's a problem, not just WHAT is wrong
-- Suggest a specific fix with corrected code
+步骤 3: 将检查单上的每一条规则应用于代码中。对于发现的每一处违规：
+- 记录行号（或大概位置）
+- 对严重程度进行分类：error（必须修复）、warning（应该修复）、info（建议考虑）
+- 解释“为什么”这是一个问题，而不仅仅是指出“什么”出错了
+- 提出具体的修复建议，并附上修正后的代码
 
-Step 4: Produce a structured review with these sections:
-- **Summary**: What the code does, overall quality assessment
-- **Findings**: Grouped by severity (errors first, then warnings, then info)
-- **Score**: Rate 1-10 with brief justification
-- **Top 3 Recommendations**: The most impactful improvements
+步骤 4: 生成包含以下部分的结构化审查报告：
+- **总结 (Summary)**: 代码的功能，整体质量评估
+- **发现问题 (Findings)**: 按严重程度分组（优先列出 errors，然后是 warnings，最后是 info）
+- **评分 (Score)**: 给出 1-10 的评分并简短说明理由
+- **前三大建议 (Top 3 Recommendations)**: 影响最深远的改进建议
 ```
 
 ![审查器模式](/images/5-agent-skill-design-patterns-img4-20260319123456.jpg)
@@ -152,35 +152,35 @@ Step 4: Produce a structured review with these sections:
 # skills/project-planner/SKILL.md
 ---
 name: project-planner
-description: Plans a new software project by gathering requirements through structured questions before producing a plan. Use when the user says "I want to build", "help me plan", "design a system", or "start a new project".
+description: 通过结构化提问收集需求后再生成计划，以此规划全新的软件项目。当用户说“我想构建”、“帮我规划”、“设计一个系统”或“开始一个新项目”时使用。
 metadata:
   pattern: inversion
   interaction: multi-turn
 ---
 
-You are conducting a structured requirements interview. DO NOT start building or designing until all phases are complete.
+你正在进行一场结构化的需求访谈。在所有阶段完成之前，切勿开始构建或设计。
 
-## Phase 1 — Problem Discovery (ask one question at a time, wait for each answer)
+## 阶段 1 — 发现问题 (每次只问一个问题，等待回答完毕)
 
-Ask these questions in order. Do not skip any.
+按顺序提出以下问题。不要跳过任何一个。
 
-- Q1: "What problem does this project solve for its users?"
-- Q2: "Who are the primary users? What is their technical level?"
-- Q3: "What is the expected scale? (users per day, data volume, request rate)"
+- Q1: "这个项目为它的用户解决了什么问题？"
+- Q2: "主要用户群体是谁？他们的技术水平如何？"
+- Q3: "预期的系统规模是多大？(比如每日活跃用户数、数据量、请求频率)"
 
-## Phase 2 — Technical Constraints (only after Phase 1 is fully answered)
+## 阶段 2 — 技术约束 (必须在阶段 1 彻底解答后才能进行)
 
-- Q4: "What deployment environment will you use?"
-- Q5: "Do you have any technology stack requirements or preferences?"
-- Q6: "What are the non-negotiable requirements? (latency, uptime, compliance, budget)"
+- Q4: "你打算使用什么部署环境？"
+- Q5: "你有什么技术栈方面的要求或偏好吗？"
+- Q6: "有哪些不可妥协的硬性要求？(如延迟、可用性正常运行时间、合规性、预算)"
 
-## Phase 3 — Synthesis (only after all questions are answered)
+## 阶段 3 — 总结整合 (必须在所有问题回答完毕后才能进行)
 
-1. Load 'assets/plan-template.md' for the output format
-2. Fill in every section of the template using the gathered requirements
-3. Present the completed plan to the user
-4. Ask: "Does this plan accurately capture your requirements? What would you change?"
-5. Iterate on feedback until the user confirms
+1. 加载 'assets/plan-template.md' 作为输出格式
+2. 使用收集到的需求填满模板的每一个部分
+3. 向用户展示完成的项目规划
+4. 询问："这份计划准确反映了你的需求吗？你有哪些地方想要修改？"
+5. 根据反馈不断迭代，直到用户确认无误
 ```
 
 ![倒置模式](/images/5-agent-skill-design-patterns-img5-20260319123456.jpg)
@@ -199,33 +199,33 @@ Ask these questions in order. Do not skip any.
 # skills/doc-pipeline/SKILL.md
 ---
 name: doc-pipeline
-description: Generates API documentation from Python source code through a multi-step pipeline. Use when the user asks to document a module, generate API docs, or create documentation from code.
+description: 通过多步骤流水线从 Python 源码生成 API 文档。当用户要求记录模块文档、生成 API 文档或从代码中创建文档时使用。
 metadata:
   pattern: pipeline
   steps: "4"
 ---
 
-You are running a documentation generation pipeline. Execute each step in order. Do NOT skip steps or proceed if a step fails.
+你正在运行一条文档生成流水线。请按顺序执行每一个步骤。切勿跳过步骤，如果前一步失败也不要继续。
 
-## Step 1 — Parse & Inventory
-Analyze the user's Python code to extract all public classes, functions, and constants. Present the inventory as a checklist. Ask: "Is this the complete public API you want documented?"
+## 步骤 1 — 解析与盘点 (Parse & Inventory)
+分析用户的 Python 代码，提取出所有公开类、函数和常量。将清单以检查列表形式展现出来。并询问："这是你想要文档化的完整公开 API 列表吗？"
 
-## Step 2 — Generate Docstrings
-For each function lacking a docstring:
-- Load 'references/docstring-style.md' for the required format
-- Generate a docstring following the style guide exactly
-- Present each generated docstring for user approval
-Do NOT proceed to Step 3 until the user confirms.
+## 步骤 2 — 生成文档字符串 (Generate Docstrings)
+针对每一个缺失文档字符串 (docstring) 的函数：
+- 加载 'references/docstring-style.md' 获取要求的格式规范
+- 严格遵循风格指南生成一段文档字符串
+- 将生成的文档字符串逐一展示给用户，以供批准确认
+在用户确认通过之前，切勿进入步骤 3。
 
-## Step 3 — Assemble Documentation
-Load 'assets/api-doc-template.md' for the output structure. Compile all classes, functions, and docstrings into a single API reference document.
+## 步骤 3 — 组装文档 (Assemble Documentation)
+加载 'assets/api-doc-template.md' 获取输出结构。将所有的类、函数及其文档字符串编译合成一份单一的 API 参考文档。
 
-## Step 4 — Quality Check
-Review against 'references/quality-checklist.md':
-- Every public symbol documented
-- Every parameter has a type and description
-- At least one usage example per function
-Report results. Fix issues before presenting the final document.
+## 步骤 4 — 质量审查 (Quality Check)
+对照 'references/quality-checklist.md' 进行复查：
+- 每一个公开符号是否都被记录
+- 每一个参数是否都有类型和描述说明
+- 每一个函数是否至少有一个使用示例
+报告审查结果。在向用户展示最终文档前必须修复所有问题。
 ```
 
 ![流水线模式](/images/5-agent-skill-design-patterns-img6-20260319123456.jpg)
