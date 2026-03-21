@@ -83,3 +83,6 @@ category: "New Trend"
 正如黄仁勋在演讲结尾引用的航天术语，AI 产业已经摆脱了传统计算的引力束缚，冲向深空。当智能可以像电力一样被大规模工厂化生产，并且每个员工都拥有自己的代币预算时，旧有的生产力范式已经彻底瓦解。
 
 这场革命不再关乎芯片本身，而关乎你生产和驾驭“代币”的速度。正如 2026 GTC 所昭示的：未来已在代币工厂的传送带上轰鸣而至。
+<p style="font-size: 0.85rem; color: #808080; text-align: right; margin-top: 2rem;">
+  <i>🔗 原文链接：<a href="https://www.youtube.com/watch?v=jw_o0xr8MWU&t=195s" style="color: #808080; text-decoration: underline;">2026 NVIDIA GTC Keynote (YouTube)</a></i>
+</p>
