@@ -3,6 +3,7 @@ title: "Ralph 全自动 AI 编码循环：运行与发版分步指南"
 description: "由 Ryan Carson 撰写的完整指南，教你如何使用 Ralph —— 一个通过简单 Bash 脚本、Git 历史记录和 JSON 就能让你在睡觉时自动编写并发布代码的 AI 编码工作流。"
 pubDate: "Mar 21 2026"
 category: "AI Coding"
+coverImage: "/images/ralph-autonomous-coding-loop.png"
 ---
 
 *Ryan Carson (@ryancarson) 的原帖*
