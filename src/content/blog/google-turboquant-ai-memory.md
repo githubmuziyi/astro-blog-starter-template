@@ -2,7 +2,7 @@
 title: 谷歌 TurboQuant：击碎 Wall Street 内存迷思的 Pied Piper 现实版
 description: 谷歌发布 TurboQuant 算法，将 LLM 内存占用降低 6 倍，推理速度提升 8 倍，且零精度损失。这引发了内存芯片市场的巨震。
 pubDate: Feb 14 2025
-heroImage: /images/google-turboquant-ai-memory-20250214120000.jpg
+heroImage: /images/google-turboquant-ai-memory-20250214120001.jpg
 category: New Trend
 ---
 
