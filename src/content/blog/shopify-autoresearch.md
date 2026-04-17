@@ -3,7 +3,7 @@ title: "Shopify 的 Autoresearch 实践：AI Agent 不仅仅用于训练模型"
 description: "Shopify 工程师如何利用 AI Agent 自动化运行研究循环，成功优化构建时间等 40 多项指标，并将项目开源。"
 pubDate: "Apr 17 2026"
 heroImage: "/images/shopify-autoresearch-20260417010800.jpg"
-category: "AI Agent"
+category: "AI Agents"
 ---
 
 ### 快速阅读
