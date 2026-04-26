@@ -1,12 +1,16 @@
-<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#1a1a1a"/>
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#d47f2a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#6e4216;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <text x="50%" y="45%" font-family="Arial" font-size="42" fill="url(#grad)" text-anchor="middle" font-weight="bold">Claude Opus 4.7</text>
-  <text x="50%" y="60%" font-family="Arial" font-size="24" fill="#ffffff" text-anchor="middle">Software Engineering Frontier</text>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="400" fill="#1a1a1a"/>
+  
+  <!-- 装饰线条 -->
   <rect x="200" y="240" width="400" height="2" fill="#d47f2a" />
+  
+  <!-- 主标题：使用十六进制颜色确保显示 -->
+  <text x="400" y="180" font-family="sans-serif" font-size="50" fill="#d47f2a" text-anchor="middle" font-weight="bold">Claude Opus 4.7</text>
+  
+  <!-- 副标题 -->
+  <text x="400" y="225" font-family="sans-serif" font-size="24" fill="#ffffff" text-anchor="middle">Software Engineering Frontier</text>
+  
+  <!-- 底部装饰 -->
+  <circle cx="400" cy="300" r="3" fill="#d47f2a" />
 </svg>
