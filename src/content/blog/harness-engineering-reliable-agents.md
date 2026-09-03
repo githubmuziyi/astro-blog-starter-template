@@ -1,8 +1,8 @@
 ---
-title: "Harness Engineering：让 AI Agent 真正可靠的系统工程"
-description: "与其反复改提示词和换模型，不如把注意力放回 Agent 的运行环境。本文用中文系统梳理 Harness Engineering 的核心思想、七项职责与落地检查清单。"
+title: "别再只改 Prompt 了：Harness Engineering 才是 AI Agent 可靠交付的关键"
+description: "为什么 AI Agent 总是忘事、乱用工具、跳过验证？问题往往不在模型，而在运行环境。本文用中文拆解 Harness Engineering 的七项核心职责与一份可直接落地的检查清单。"
 pubDate: "2026-09-03"
-heroImage: "/blog-placeholder-2.jpg"
+heroImage: "/images/harness-engineering-20260307053500.jpg"
 category: "AI Agents"
 ---
 
@@ -11,6 +11,12 @@ category: "AI Agents"
 很多人面对一个频繁失败的 Agent，第一反应是改 Prompt、换模型、加大上下文窗口。但如果 Agent 仍然会忘记决策、误用工具、跳过验证、反复陷入同一循环，那么真正的问题往往不在模型智力，而在模型之外的运行环境。这个环境就是 **Harness（运行脚手架 / 控制环境）**。
 
 Harness Engineering 的核心不是让模型“更聪明”，而是让模型在一个**可观察、可验证、可恢复、可约束**的系统中工作。它决定了 Agent 能看到什么、能做什么、哪些状态会被保留、什么算完成、什么时候必须停止。换句话说，Prompt 只定义了指令，Harness 才定义了执行条件。
+
+如果你想快速抓住本文重点，只要记住三句话：
+
+- Agent 反复失败，先别急着怪模型，先检查环境。
+- 可靠性来自契约、工具、记忆、验证、权限和追踪，而不是一句更长的提示词。
+- 真正能复利的优势，不在 Prompt，而在你为模型搭建的整个系统。
 
 ---
 
